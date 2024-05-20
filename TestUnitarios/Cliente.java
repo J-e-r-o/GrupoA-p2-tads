@@ -1,4 +1,4 @@
-package uy.edu.um.adt.binarytree;
+package TestUnitarios;
 public class Cliente {
 //public class Cliente implements Comparable<Cliente>{
     String nombre;
