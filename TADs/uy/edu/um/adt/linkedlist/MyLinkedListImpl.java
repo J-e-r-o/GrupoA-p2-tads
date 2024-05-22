@@ -249,5 +249,4 @@ public class MyLinkedListImpl<T> implements MyList<T>, MyQueue<T>, MyStack<T>, M
 
 
 
-
 }

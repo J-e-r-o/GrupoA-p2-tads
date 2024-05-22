@@ -10,4 +10,7 @@ public interface MyCircularLinkedList<T> {
     void remove(T value);
 
     int size();
+
+
+
 }
