@@ -1,5 +1,7 @@
 package uy.edu.um.adt.hashCerrado;
 import java.util.Vector;
+import java.util.ArrayList;
+
 
 
 
@@ -28,13 +30,15 @@ public class hash<K,V> implements hashInterfaze<K,V>{
         HashNode<K,V> nuevoHashNode= new HashNode<K,V>(key, value);
         int LugarDelHash=HashFunction(key);
         
+    
         
         //Tenemos que ver que el Lugar insertado este vacio
          while(Hash.get(LugarDelHash) !=null){
-             if (LugarDelHash>= tableSize){
+            LugarDelHash=LugarDelHash+1;
+            if (LugarDelHash >= tableSize){
                 LugarDelHash=0;
             }
-                LugarDelHash+=1;
+                
         }
         Hash.set(LugarDelHash,nuevoHashNode);
         this.capacity+=1;
@@ -47,15 +51,26 @@ public class hash<K,V> implements hashInterfaze<K,V>{
     }
     
     public boolean contains(K key){
-        //Esta mal
-        return Hash.contains(key);    
+        boolean resultado=false;
+        
+        
+        
+        return resultado;    
     }
     
     public void remove(K clave){
         int indiceDelBorrado= HashFunction(clave);
-        System.out.println();
     
         while (indiceDelBorrado<this.tableSize){
+            /*         while(Hash.get(LugarDelHash) !=null){
+            LugarDelHash=LugarDelHash+1;
+            if (LugarDelHash >= tableSize){
+                LugarDelHash=0;
+            }
+                
+        } */
+            
+            
             if (this.Hash.get(indiceDelBorrado).key==clave){
                 this.Hash.get(indiceDelBorrado).borrado=true;
                 break;
@@ -67,14 +82,16 @@ public class hash<K,V> implements hashInterfaze<K,V>{
     private void Rehash(){
         NextPrimo np = new NextPrimo();
         int tablesizeVIEJO=this.tableSize;
-        
         this.tableSize= np.nextPrimo(tableSize*2);
-        Vector<HashNode<K,V>> Hash_nuevo= new Vector<>(tableSize);
         
+        Vector<HashNode<K,V>> Hash_nuevo= new Vector<>(tableSize);
+        ArrayList<HashNode<K,V>> listaAuxiliar = new ArrayList<>();
         //LLena todo el Hash de nodos nulos
         for(int i = 0; i < tableSize; i++){
             Hash_nuevo.add(null);
         }
+        
+        
         for (int i = 0; i < tablesizeVIEJO; i++) {
             //Caso 1 y caso 2 no hacemos nada
             if(Hash.get(i)==null){
@@ -85,13 +102,19 @@ public class hash<K,V> implements hashInterfaze<K,V>{
                 }
                 else{
                     HashNode<K,V> Nodo_Que_Tenemos_Que_Mudar=Hash.get(i);
-                    int lugarEnNuevoHash =HashFunction(Nodo_Que_Tenemos_Que_Mudar.key);
-                    Hash_nuevo.set(lugarEnNuevoHash, Nodo_Que_Tenemos_Que_Mudar);
+                    listaAuxiliar.add(Nodo_Que_Tenemos_Que_Mudar);
+                    
+                    //El error es que si el lugar es el mismo el set los va a poner uno arriba del otro
+                    //Hash_nuevo.put(lugarEnNuevoHash, Nodo_Que_Tenemos_Que_Mudar);
                 }
             }
         }
-
         this.Hash=Hash_nuevo;
+        for (int i=0; i<listaAuxiliar.size();i++){
+            HashNode<K,V> nodoaux= listaAuxiliar.get(i);
+            this.put(nodoaux.key,nodoaux.valor);
+        }
+        
     }
 
     private int HashFunction(K key){
@@ -113,5 +136,5 @@ public class hash<K,V> implements hashInterfaze<K,V>{
     }
 
     
-    
+
 }
