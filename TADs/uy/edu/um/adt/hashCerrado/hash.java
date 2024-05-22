@@ -12,20 +12,19 @@ public class hash<K,V> implements hashInterfaze<K,V>{
     Vector<HashNode<K, V>> Hash;
     int tableSize;
     int capacity;
-    int percentage_capacity;
+    
  
 
     public hash(){
         capacity=0;
         tableSize=11;
-        percentage_capacity=0;
         Hash= new Vector<>(tableSize);
         for (int i = 0; i < tableSize; i++) {
             Hash.add(null);}
     }   
     
     
-    
+    //Listo
     public void put(K key, V value){
         HashNode<K,V> nuevoHashNode= new HashNode<K,V>(key, value);
         int LugarDelHash=HashFunction(key);
@@ -42,12 +41,21 @@ public class hash<K,V> implements hashInterfaze<K,V>{
         }
         Hash.set(LugarDelHash,nuevoHashNode);
         this.capacity+=1;
-        this.percentage_capacity=((capacity*100)/tableSize);
+        int percentage_capacity=((capacity*100)/tableSize);
 
         //Hacer rehashing cuando el hash es muy grande 
         if(percentage_capacity>=75){
             this.Rehash();
+            
+            int tamanioReal=0;
+            for(int i=0;i<tableSize;i++){
+                if (this.Hash.get(i)==null || this.Hash.get(i).borrado==true){}
+                else{
+                tamanioReal+=1; }
+            }
+        this.capacity=tamanioReal;
         }
+
     }
     
     public boolean contains(K key){
@@ -78,7 +86,7 @@ public class hash<K,V> implements hashInterfaze<K,V>{
                 indiceDelBorrado+=1;
             }
     }
-
+    //Listo
     private void Rehash(){
         NextPrimo np = new NextPrimo();
         int tablesizeVIEJO=this.tableSize;
@@ -116,11 +124,11 @@ public class hash<K,V> implements hashInterfaze<K,V>{
         }
         
     }
-
+    //Listo
     private int HashFunction(K key){
         return (key.hashCode()) % tableSize;
     }
-
+    //Listo
     public String ShowHash(){
         String resultado="{";
         for(int i=0;i<tableSize;i++){
