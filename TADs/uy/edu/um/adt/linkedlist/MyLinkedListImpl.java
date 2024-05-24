@@ -164,7 +164,7 @@ public class MyLinkedListImpl<T> implements MyList<T>, MyQueue<T>, MyStack<T>, M
 
     }
 
-    private T removeLast() { // esta operación remueve el último elemento y retorna el elemento eliminado
+    public T removeLast() { // esta operación remueve el último elemento y retorna el elemento eliminado
         T valueToRemove = null;
 
         if (this.last != null) {
