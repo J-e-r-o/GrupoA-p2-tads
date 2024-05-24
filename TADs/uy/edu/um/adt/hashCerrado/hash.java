@@ -32,7 +32,7 @@ public class hash<K,V> implements hashInterfaze<K,V>{
     
         
         //Tenemos que ver que el Lugar insertado este vacio
-         while(Hash.get(LugarDelHash) !=null){
+        while(Hash.get(LugarDelHash) !=null){
             LugarDelHash=LugarDelHash+1;
             if (LugarDelHash >= tableSize){
                 LugarDelHash=0;
@@ -57,34 +57,31 @@ public class hash<K,V> implements hashInterfaze<K,V>{
         }
 
     }
-    
+    //Listo
     public boolean contains(K key){
         boolean resultado=false;
-        
-        
-        
+        int obtenido= HashFunction(key);
+        while(this.Hash.get(obtenido) != null){
+            if (this.Hash.get(obtenido).key == key){
+                resultado= true;
+                break;
+            }
+        }
         return resultado;    
     }
-    
+    //Listo
     public void remove(K clave){
         int indiceDelBorrado= HashFunction(clave);
-    
-        while (indiceDelBorrado<this.tableSize){
-            /*         while(Hash.get(LugarDelHash) !=null){
-            LugarDelHash=LugarDelHash+1;
-            if (LugarDelHash >= tableSize){
-                LugarDelHash=0;
-            }
-                
-        } */
-            
-            
+        while(Hash.get(indiceDelBorrado) !=null){
             if (this.Hash.get(indiceDelBorrado).key==clave){
                 this.Hash.get(indiceDelBorrado).borrado=true;
                 break;
             }    
-                indiceDelBorrado+=1;
+            indiceDelBorrado=indiceDelBorrado+1;
+            if (indiceDelBorrado >= tableSize){
+                indiceDelBorrado=0;
             }
+        }         
     }
     //Listo
     private void Rehash(){
@@ -144,5 +141,5 @@ public class hash<K,V> implements hashInterfaze<K,V>{
     }
 
     
-
+   
 }

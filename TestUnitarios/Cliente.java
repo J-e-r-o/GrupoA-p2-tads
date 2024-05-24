@@ -30,4 +30,10 @@ public class Cliente {
         int resul = Integer.compare(this.edad, otro.edad);
         return resul;
     }*/
+
+    public static void main(String[] args){
+        System.out.println(";saufh.dfsuhue");
+    }
+
 }
+
