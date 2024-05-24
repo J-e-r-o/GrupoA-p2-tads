@@ -1,0 +1,5 @@
+#Ignore del out folder
+/out/
+
+#Ignore del .idea folder
+/.idea/
