@@ -28,7 +28,7 @@ class  PrueboArbolBinBusqueda {
       MyList<Integer> ls = oTree.inOrder();
 
       System.out.println("Listado enOrden:");
-      ls.recorro_recu(ls.getPrimero());
+      //sls.recorro_recu(ls.getPrimero());
       System.out.println("Fin Lista");
 
   }

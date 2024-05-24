@@ -40,7 +40,7 @@ class PrueboArbolBinBusquedaClientes {
       MyList<Integer> ls = oTree.inOrder();
 
       System.out.println("Listado enOrden:");
-      ls.recorro_recu(ls.getPrimero());
+      //ls.recorro_recu(ls.getPrimero());
       System.out.println("Fin Lista");
 
       ///Creo el arbol con los nombres como clave
@@ -61,21 +61,21 @@ class PrueboArbolBinBusquedaClientes {
       System.out.println("****************************************");
       MyList<String> ls2 = oTree2.inOrder();
       System.out.println("Listado enOrden del segundo arbol:");
-      ls2.recorro_recu(ls2.getPrimero());
+      //ls2.recorro_recu(ls2.getPrimero());
       System.out.println("Fin EnOrden");
 
       System.out.println("****************************************");
 
       MyList<String> ls3 = oTree2.postOrder();
       System.out.println("Listado postOrden del segundo arbol:");
-      ls2.recorro_recu(ls3.getPrimero());
+      //ls2.recorro_recu(ls3.getPrimero());
       System.out.println("Fin PostOrden");
 
       System.out.println("****************************************");
 
       MyList<String> ls4 = oTree2.preOrder();
       System.out.println("Listado preOrden del segundo arbol:");
-      ls2.recorro_recu(ls4.getPrimero());
+      //ls2.recorro_recu(ls4.getPrimero());
       System.out.println("Fin PreOrden");
 
   }
