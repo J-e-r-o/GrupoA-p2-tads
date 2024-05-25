@@ -32,10 +32,10 @@ public class PruebasDeHash {
         h.put(19,"EEEEEEEEEEEEEEOOOOOOOOO");
         h.remove(18);
         System.out.println(h.ShowHash());
-
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         System.out.println(h.contains(18));
         System.out.println(h.contains(13));
-        System.out.println("erlugfure");
+       
 
     }
 
