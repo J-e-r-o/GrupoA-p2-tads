@@ -1,56 +1,69 @@
 package TestUnitarios;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import uy.edu.um.adt.linkedlist.MyLinkedListImpl;
 import uy.edu.um.adt.stack.EmptyStackException;
 import uy.edu.um.adt.stack.MyStack;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class StackTest {
-    public static void main(String[] args) {
+public class StackTest {
+
+    @Test
+    public void Test1() throws EmptyStackException {
 
         MyStack<String> testStack = new MyLinkedListImpl<>();
 
-        try{
-            testStack.push("1");
-            testStack.push("2");
-            testStack.push("3");
-            testStack.pop();
-            assertEquals("2",testStack.peek());
-            testStack.pop();
-            assertEquals("1",testStack.peek());
-            testStack.pop();
-        } catch (EmptyStackException _){}
+        testStack.push("1");
+        testStack.push("2");
+        testStack.push("3");
+        Assertions.assertEquals("3",testStack.peek());
+        testStack.pop();
+        Assertions.assertEquals("2",testStack.peek());
+        testStack.pop();
+        Assertions.assertEquals("1",testStack.peek());
+        testStack.pop();
+    }
+
+    @Test
+    public void Test2() throws EmptyStackException {
+
+        MyStack<String> testStack = new MyLinkedListImpl<>();
+
 
         testStack.push("1");
-        assertEquals("1",testStack.peek());
         testStack.push("2");
-        assertEquals("2",testStack.peek());
         testStack.push("3");
-        assertEquals("3",testStack.peek());
-        assertEquals(3,testStack.size());
-
         testStack.push("4");
-        assertEquals("4",testStack.peek());
-        testStack.push("5");
-        assertEquals("5",testStack.peek());
-        assertEquals(5,testStack.size());
 
-        try {
-            testStack.pop();
-            testStack.pop();
-            testStack.pop();
-            testStack.pop();
-            assertEquals(1, testStack.size());
-            testStack.pop();
-            assertEquals(0, testStack.size());
+        Assertions.assertNotEquals("1",testStack.peek());
 
-        } catch (EmptyStackException _){}
+        testStack.pop();
+        Assertions.assertNotEquals("1",testStack.peek());
+
+        testStack.pop();
+        Assertions.assertNotEquals("1",testStack.peek());
+
+        testStack.pop();
+        Assertions.assertEquals("1",testStack.peek());
+    }
 
 
+    @Test
+    public void Test3() throws EmptyStackException {
 
+        MyStack<String> testStack = new MyLinkedListImpl<>();
 
+        Assertions.assertEquals(0, testStack.size());
+        testStack.push("1");
+        Assertions.assertEquals(1, testStack.size());
+        testStack.push("2");
+        Assertions.assertEquals(2, testStack.size());
 
+        testStack.pop();
+        testStack.pop();
+
+        Assertions.assertEquals(0, testStack.size());
 
     }
 
