@@ -10,8 +10,8 @@ public class hash<K,V> implements hashInterfaze<K,V>{
     //Vamos a lidiear linealmente con las colisiones 
     
     Vector<HashNode<K, V>> Hash;
-    int tableSize;
-    int capacity;
+    private int tableSize;
+    public int capacity;
     
  
 
@@ -49,11 +49,10 @@ public class hash<K,V> implements hashInterfaze<K,V>{
             
             int tamanioReal=0;
             for(int i=0;i<tableSize;i++){
-                if (this.Hash.get(i)==null || this.Hash.get(i).borrado==true){}
-                else{
+                if (this.Hash.get(i) != null && this.Hash.get(i).borrado==false){
                 tamanioReal+=1; }
             }
-        this.capacity=tamanioReal;
+            this.capacity=tamanioReal;
         }
 
     }
@@ -102,11 +101,7 @@ public class hash<K,V> implements hashInterfaze<K,V>{
         }
         
         
-        for (int i = 0; i < tablesizeVIEJO; i++) {
-            //Caso 1 y caso 2 no hacemos nada
-            if(Hash.get(i)==null){
-                
-            }    
+        for (int i = 0; i < tablesizeVIEJO; i++) { 
             if(Hash.get(i)!=null){
                 if(Hash.get(i).borrado==true){   
                 }
@@ -145,6 +140,6 @@ public class hash<K,V> implements hashInterfaze<K,V>{
         return resultado;
     }
 
-    
+
    
 }
