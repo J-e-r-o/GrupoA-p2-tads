@@ -62,10 +62,15 @@ public class hash<K,V> implements hashInterfaze<K,V>{
         boolean resultado=false;
         int obtenido= HashFunction(key);
         while(this.Hash.get(obtenido) != null){
-            if (this.Hash.get(obtenido).key == key){
+            if (this.Hash.get(obtenido).key == key && this.Hash.get(obtenido).borrado== false){
                 resultado= true;
                 break;
             }
+            obtenido=obtenido+1;
+            if (obtenido >= tableSize){
+                obtenido=0;
+            }
+        
         }
         return resultado;    
     }
